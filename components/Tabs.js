@@ -26,18 +26,20 @@
 // .then(res => {
 // console.log(res.data)
 
-function maxGit(stuff){
+let res = axios.get(`https://lambda-times-api.herokuapp.com/articles`);
+
+// function maxGit(stuff){
   
-  }
+//   }
   
-  axios
-    .get('hhttps://lambda-times-api.herokuapp.com/topics')
-    .then(res => {
-      console.log(res.data)
-      let stuff = res.data
-      maxGit(stuff)
+//   axios
+//     .get('hhttps://lambda-times-api.herokuapp.com/topics')
+//     .then(res => {
+//       console.log(res.data)
+//       let stuff = res.data
+//       maxGit(stuff)
   
-    })
-    .catch(err => {
-      console.log(err)
-    })
+//     })
+//     .catch(err => {
+//       console.log(err)
+//     })

@@ -29,7 +29,7 @@ function cards(obj) {
     
     
     
-    header-container.append(div2, div3, div4, div5, img, span3)
+    cards-container.append(div2, div3, div4, div5, img, span3)
     
     div2.classList.add('card')
     div3.classList.add('headline')

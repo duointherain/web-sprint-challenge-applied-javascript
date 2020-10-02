@@ -10,36 +10,30 @@
 //
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
 
-// axios
-//   .get('https://lambda-times-api.herokuapp.com/topics')
-//   .then(res => {
-//     console.log(res.data)
-//     let stuff = res.data
-//     maxGit(stuff)
 
-//   })
-//   .catch(err => {
-//     console.log(err)
-//   })
-// axios
-// .get('https://lambda-times-api.herokuapp.com/topics')
-// .then(res => {
-// console.log(res.data)
+axios({
+    url: 'https://lambda-times-api.herokuapp.com/topics',
+    method: 'get'
+  })
 
-let res = axios.get(`https://lambda-times-api.herokuapp.com/articles`);
 
-// function maxGit(stuff){
-  
-//   }
+
+
+
   
 //   axios
 //     .get('hhttps://lambda-times-api.herokuapp.com/topics')
 //     .then(res => {
 //       console.log(res.data)
 //       let stuff = res.data
-//       maxGit(stuff)
+//       lNews(stuff)
   
 //     })
 //     .catch(err => {
 //       console.log(err)
 //     })
+
+    // function lNews(res){
+    //     const div6 = document.createElement('div')
+
+    //   }

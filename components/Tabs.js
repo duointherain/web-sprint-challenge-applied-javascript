@@ -9,3 +9,35 @@
 //    <div class="tab">topic here</div>
 //
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
+
+// axios
+//   .get('https://lambda-times-api.herokuapp.com/topics')
+//   .then(res => {
+//     console.log(res.data)
+//     let stuff = res.data
+//     maxGit(stuff)
+
+//   })
+//   .catch(err => {
+//     console.log(err)
+//   })
+// axios
+// .get('https://lambda-times-api.herokuapp.com/topics')
+// .then(res => {
+// console.log(res.data)
+
+function maxGit(stuff){
+  
+  }
+  
+  axios
+    .get('hhttps://lambda-times-api.herokuapp.com/topics')
+    .then(res => {
+      console.log(res.data)
+      let stuff = res.data
+      maxGit(stuff)
+  
+    })
+    .catch(err => {
+      console.log(err)
+    })

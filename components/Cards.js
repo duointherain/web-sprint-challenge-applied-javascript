@@ -67,9 +67,9 @@ axios
   .get("https://lambda-times-api.herokuapp.com/articles")
   .then((result) => {
     const dataSet = result.data.articles;
-    // console.log(Object.entries(dataSet));
+    
     Object.entries(dataSet).forEach((subSet) => {
-      // fix node class so they match tabs
+     
       if (subSet[0] === "node") {
         subSet[0] = "node.js";
       }

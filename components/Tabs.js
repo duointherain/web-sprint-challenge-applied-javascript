@@ -11,29 +11,41 @@
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
 
 
-axios({
-    url: 'https://lambda-times-api.herokuapp.com/topics',
-    method: 'get'
+  import axios from "axios";
+
+// grab entry-point
+const topicsDiv = document.querySelector(".topics");
+
+axios
+  .get("https://lambda-times-api.herokuapp.com/topics")
+  .then((result) => {
+    const topics = result.data.topics;
+    topics.forEach((topic) => {
+      let newTopic = document.createElement("div");
+      newTopic.classList.add("tab", topic);
+      newTopic.textContent = topic;
+      // event listener to toggle topics
+      newTopic.addEventListener("click", (e) => {
+        const cardList = document.querySelectorAll(".card");
+        if (newTopic.classList.contains("active")) {
+          cardList.forEach((card) => {
+            card.style.display = "flex";
+          });
+        } else {
+          cardList.forEach((card) => {
+            if (card.classList.contains(topic)) {
+              card.style.display = "flex";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        }
+        newTopic.classList.toggle("active");
+      });
+      topicsDiv.appendChild(newTopic);
+    });
   })
+  .catch((error) => {
+    console.log(error);
+  });
 
-
-
-
-
-  
-//   axios
-//     .get('hhttps://lambda-times-api.herokuapp.com/topics')
-//     .then(res => {
-//       console.log(res.data)
-//       let stuff = res.data
-//       lNews(stuff)
-  
-//     })
-//     .catch(err => {
-//       console.log(err)
-//     })
-
-    // function lNews(res){
-    //     const div6 = document.createElement('div')
-
-    //   }

@@ -17,29 +17,6 @@
 //   </div>
 // </div>
 
-function cards(obj) {
-    let res = axios.get(`https://lambda-times-api.herokuapp.com/articles`);
-
-    const div2 = document.createElement('div')
-    const div3 = document.createElement('div')
-    const div4 = document.createElement('div')
-    const div5 = document.createElement('div')
-    const img = document.createElement('img')
-    const span3 = document.createElement('span')
-    
-    
-    
-    cards-container.append(div2, div3, div4, div5, img, span3)
-    
-    div2.classList.add('card')
-    div3.classList.add('headline')
-    div4.classList.add('author')
-    div5.classList.add('img-container')
-    
-
-    
-    }
-
 
 
 
@@ -49,3 +26,58 @@ function cards(obj) {
 // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
+
+
+import axios from "axios";
+
+const cardsContainer = document.querySelector(".cards-container");
+
+function cardMaker(data, topic) {
+  const card = document.createElement("div");
+  const headline = document.createElement("div");
+  const author = document.createElement("div");
+  const imgContainer = document.createElement("div");
+  const image = document.createElement("img");
+  const byAuthor = document.createElement("span");
+
+  card.classList.add("card");
+  card.classList.add(topic);
+  headline.classList.add("headline");
+  author.classList.add("author");
+  imgContainer.classList.add("img-container");
+
+  headline.textContent = data.headline;
+  image.src = data.authorPhoto;
+  byAuthor.textContent = `By ${data.authorName}`;
+
+  card.appendChild(headline);
+  card.appendChild(author);
+  author.appendChild(imgContainer);
+  author.appendChild(byAuthor);
+  imgContainer.appendChild(image);
+
+  card.addEventListener("click", (e) => {
+    console.log(headline.textContent);
+  });
+
+  return card;
+}
+
+axios
+  .get("https://lambda-times-api.herokuapp.com/articles")
+  .then((result) => {
+    const dataSet = result.data.articles;
+    // console.log(Object.entries(dataSet));
+    Object.entries(dataSet).forEach((subSet) => {
+      // fix node class so they match tabs
+      if (subSet[0] === "node") {
+        subSet[0] = "node.js";
+      }
+        subSet[1].forEach((article) => {
+          cardsContainer.appendChild(cardMaker(article, subSet[0]));
+        });
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
